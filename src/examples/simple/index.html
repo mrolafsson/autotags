@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+	"http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+		<title>AutoTags - Tag Suggestion Algorithm</title>
+		<link rel="stylesheet" href="css/demo_ui.css" type="text/css" media="screen" charset="utf-8">
+		<script type="text/javascript" src="../../main/javascript/autotags-js-core.js" charset="utf-8"></script>
+		<script type="text/javascript" src="../../main/javascript/en/autotags-js-en-blacklist-generic.js" charset="utf-8"></script>
+		<script type="text/javascript" src="../../main/javascript/custom/autotags-js-whitelist.js" charset="utf-8"></script>
+		<script type="text/javascript" src="../../main/javascript/custom/autotags-js-constants.js" charset="utf-8"></script>
+		<script type="text/javascript" src="../../../lib/PorterStemmer.js" charset="utf-8"></script>
+		<script type="text/javascript" src="javascript/demo_ui.js" charset="utf-8"></script>
+	</head>
+	<body>
+		<form id="textForm" name="textForm" action="" onsubmit="generateTags( document.textForm.textToAnalyze.value, document.textForm.termCount.value, chkDebug.checked ); return false;" accept-charset="utf-8">
+			<h1>AutoTags 1.3</h1>
+			<div>
+				<p>Automatic tag suggestions or keyword generation for text, using unsupervised semantic analysis.</p>
+				<p>This example uses a fairly short block of text from Wikipedia and is for demonstration purposes supported by a hypothetical, domain-specific white list (containing in this case only two concepts: 'artificial intelligence' and 'complex models'. Also demonstrated is the use of 'tag constants' which are always suggested ('news','research' & 'favourite').</p>
+				<div class="label">Text:</div>
+				<textarea id="textToAnalyze" name="textToAnalyze" cols="83" rows="10">This text is from a Wikipedia entry about Bayes' Theorem. Bayesian inference has applications in artificial intelligence and expert systems. Bayesian inference techniques have been a fundamental part of computerized pattern recognition techniques since the late 1950s. There is also an ever growing connection between Bayesian methods and simulation-based Monte Carlo techniques since complex models cannot be processed in closed form by a Bayesian analysis, while the graphical model structure inherent to statistical models, may allow for efficient simulation algorithms like the Gibbs sampling and other Metropolis-Hastings algorithm schemes. Recently Bayesian inference has gained popularity amongst the phylogenetics community for these reasons; applications such as BEAST, MrBayes and P4 allow many demographic and evolutionary parameters to be estimated simultaneously.</textarea><br>
+				<div class="label">Tags:</div>
+				<input type="text" id="txtTags">
+				<p>Number of Tags to Generate: <input type="text" id="termCount" size="3" value="12">
+					<input type="button" onclick="if ( Number(termCount.value) >= 5) termCount.value = Number(termCount.value) - 5; generateTags( document.textForm.textToAnalyze.value, document.textForm.termCount.value, chkDebug.checked );" value="Less"><input type="button" onclick="termCount.value = Number(termCount.value) + 5; generateTags( document.textForm.textToAnalyze.value, document.textForm.termCount.value, chkDebug.checked );" value="More">
+					<input type="checkbox" id="chkSpaceSeparation" onclick="setSeparator( this.checked ); generateTags( document.textForm.textToAnalyze.value, document.textForm.termCount.value, chkDebug.checked );"> Use underscore 
+					<input type="checkbox" id="chkDebug" onclick="generateTags( document.textForm.textToAnalyze.value, document.textForm.termCount.value, chkDebug.checked );"> Debug <input type="submit" value="Analyze &rarr;" ><br>
+					<input type="checkbox" id="chkCompoundBoost" onclick="setCompoundBoost( this.checked ); generateTags( document.textForm.textToAnalyze.value, document.textForm.termCount.value, chkDebug.checked );"> I prefer concepts to single terms
+				</p>
+				<div id="messageContainer" class="label"></div>
+				<div id="tagsContainer"><!-- Tags will appear here --></div>
+				<div id="debugContainer"></div>
+			</div>
+		</form>
+	</body>
+</html>

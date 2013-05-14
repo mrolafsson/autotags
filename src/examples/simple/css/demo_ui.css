@@ -1,0 +1,74 @@
+body {
+	width: 610px;
+}
+
+table.debugTable {
+	width: 100%;
+	font-size: 0.8em;
+}
+
+thead {
+	font-weight: bold;
+}
+
+#textToAnalyze, #txtTags {
+	width: 600px;
+}
+
+#textToAnalyze {
+	height: 120px;
+}
+
+#txtTags {
+	font-weight: bold;
+}
+
+div.label {
+	font-weight: bold;
+}
+
+#tagsContainer, #debugContainer{
+	width: 600px;
+	clear: both;
+}
+
+#debugContainer {
+	padding-top: 10px;
+}
+
+div.tag, div.tagNotSelected, div.tagSelected, div.tagConstantNotSelected {
+	font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+	font-size: 0.65em;
+	font-weight: bold;
+	float: left;
+	color: white;
+	white-space: wrap;
+	margin-right: 3px;
+	margin-top: 3px;
+	padding: 3px 6px 5px 6px;
+	cursor: pointer;
+}
+
+div.tagNotSelected {
+	background-color: #487bd6;
+}
+
+div.tagNotSelected:hover {
+	background-color: #365ca1;
+}
+
+div.tagSelected {
+	background-color: #339933;
+}
+
+div.tagSelected:hover {
+	background-color: #ff6600;
+}
+
+div.tagConstantNotSelected {
+	background-color: #666666;
+}
+
+div.tagConstantNotSelected:hover {
+	background-color: #999999;
+}
